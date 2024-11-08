@@ -35,7 +35,7 @@ export default function Home() {
         >
           <Image
             aria-hidden
-            src="/Github_Invertocat_Light.svg"
+            src="/GitHub_Invertocat_Light.svg"
             alt="GitHub Invertocat Logo"
             width={16}
             height={16}
