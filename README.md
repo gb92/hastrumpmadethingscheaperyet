@@ -2,6 +2,10 @@
 
 This repository contains the code for the website at www.hastrumpmadethingscheaperyet.com. This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and inspired by other silly event tracking websites like https://istheshipstillstuck.com/.
 
+The scoreboard reads seasonally adjusted Consumer Price Index data from the
+[U.S. Bureau of Labor Statistics](https://www.bls.gov/cpi/) and compares the
+latest available month with January 2025.
+
 ## Local Development
 
 First, clone the repository. Then run the development server:
