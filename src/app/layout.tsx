@@ -16,13 +16,11 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Has Trump Made Things Cheaper Yet?",
-  description:
-    "A plain-English, data-backed tracker of U.S. consumer prices since January 2025.",
+  description: "A plain-English, data-backed tracker of U.S. consumer prices since January 2025.",
   metadataBase: new URL("https://www.hastrumpmadethingscheaperyet.com"),
   openGraph: {
     title: "Has Trump Made Things Cheaper Yet?",
-    description:
-      "The answer, the numbers, and the context behind U.S. consumer prices.",
+    description: "The answer, the numbers, and the context behind U.S. consumer prices.",
     type: "website",
   },
 };
@@ -34,9 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Analytics />
         {children}
       </body>

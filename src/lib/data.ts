@@ -2,9 +2,7 @@ const BLS_API = "https://api.bls.gov/publicAPI/v2/timeseries/data";
 const BASELINE_YEAR = "2025";
 const BASELINE_PERIOD = "M01";
 
-type DataResult<T> =
-  | { status: "ready"; data: T }
-  | { status: "error"; message: string };
+type DataResult<T> = { status: "ready"; data: T } | { status: "error"; message: string };
 
 type BlsObservation = {
   year: string;
@@ -58,14 +56,10 @@ const metricDefinitions = [
   },
 ];
 
-async function fetchBlsSeries(
-  id: string,
-  endYear: number,
-): Promise<BlsObservation[]> {
-  const response = await fetch(
-    `${BLS_API}/${id}?startyear=${BASELINE_YEAR}&endyear=${endYear}`,
-    { next: { revalidate: 43200 } },
-  );
+async function fetchBlsSeries(id: string, endYear: number): Promise<BlsObservation[]> {
+  const response = await fetch(`${BLS_API}/${id}?startyear=${BASELINE_YEAR}&endyear=${endYear}`, {
+    next: { revalidate: 43200 },
+  });
 
   if (!response.ok) {
     throw new Error(`BLS returned HTTP ${response.status}`);
@@ -80,8 +74,7 @@ async function fetchBlsSeries(
 
   return observations.filter(
     (observation) =>
-      observation.period.startsWith("M") &&
-      Number.isFinite(Number(observation.value)),
+      observation.period.startsWith("M") && Number.isFinite(Number(observation.value)),
   );
 }
 
@@ -97,8 +90,7 @@ export async function getPriceData(): Promise<DataResult<PriceData>> {
       const latest = observations[0];
       const baseline = observations.find(
         (observation) =>
-          observation.year === BASELINE_YEAR &&
-          observation.period === BASELINE_PERIOD,
+          observation.year === BASELINE_YEAR && observation.period === BASELINE_PERIOD,
       );
 
       if (!latest || !baseline) {
@@ -110,13 +102,11 @@ export async function getPriceData(): Promise<DataResult<PriceData>> {
 
       return {
         ...definition,
-        change: ((latestValue / baselineValue) - 1) * 100,
+        change: (latestValue / baselineValue - 1) * 100,
         latestLabel: `${latest.periodName} ${latest.year}`,
         latestValue,
         baselineValue,
-        history: [...observations]
-          .reverse()
-          .map((observation) => Number(observation.value)),
+        history: [...observations].reverse().map((observation) => Number(observation.value)),
       };
     });
 

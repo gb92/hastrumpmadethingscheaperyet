@@ -9,8 +9,7 @@ const sourceLinks = [
   {
     title: "How tariffs affect prices",
     publisher: "Tax Foundation",
-    href:
-      "https://taxfoundation.org/research/federal-tax/trump-tariffs-trade-war/",
+    href: "https://taxfoundation.org/research/federal-tax/trump-tariffs-trade-war/",
   },
 ];
 
@@ -46,10 +45,8 @@ function Sparkline({ metric }: { metric: PriceMetric }) {
 
 export default async function Home() {
   const priceData = await getPriceData();
-  const overallChange =
-    priceData.status === "ready" ? priceData.data.metrics[0].change : null;
-  const answer =
-    overallChange === null ? "Not proven." : overallChange <= 0 ? "Yes." : "No.";
+  const overallChange = priceData.status === "ready" ? priceData.data.metrics[0].change : null;
+  const answer = overallChange === null ? "Not proven." : overallChange <= 0 ? "Yes." : "No.";
 
   return (
     <div className="site-shell">
@@ -86,8 +83,8 @@ export default async function Home() {
                     {overallChange >= 0 ? " higher" : " lower"} than January 2025.
                   </strong>
                   <p>
-                    That&apos;s the broad U.S. average—not a slogan, a single
-                    grocery receipt or a vibes-based index.
+                    That&apos;s the broad U.S. average—not a slogan, a single grocery receipt or a
+                    vibes-based index.
                   </p>
                 </>
               )}
@@ -125,9 +122,7 @@ export default async function Home() {
                     <span>{metric.label}</span>
                     <span className="metric-period">Since Jan. 2025</span>
                   </div>
-                  <strong
-                    className={`metric-number ${metric.change <= 0 ? "down" : ""}`}
-                  >
+                  <strong className={`metric-number ${metric.change <= 0 ? "down" : ""}`}>
                     {formatChange(metric.change)}
                   </strong>
                   <p>{metric.description}</p>
@@ -142,9 +137,8 @@ export default async function Home() {
           )}
 
           <p className="method-note">
-            <span>Method:</span> change in the seasonally adjusted CPI-U index
-            from January 2025 to the latest available month. A rising index means
-            the average price level rose. Source:{" "}
+            <span>Method:</span> change in the seasonally adjusted CPI-U index from January 2025 to
+            the latest available month. A rising index means the average price level rose. Source:{" "}
             <a href="https://www.bls.gov/cpi/">U.S. Bureau of Labor Statistics</a>.
           </p>
         </section>
@@ -161,35 +155,33 @@ export default async function Home() {
               <span className="context-number">A</span>
               <h3>Prices can rise more slowly and still rise.</h3>
               <p>
-                Inflation is the rate of change. If inflation falls from 6% to
-                3%, prices did not fall; they just climbed at a slower pace.
-                Broad price declines are called deflation.
+                Inflation is the rate of change. If inflation falls from 6% to 3%, prices did not
+                fall; they just climbed at a slower pace. Broad price declines are called deflation.
               </p>
             </article>
             <article>
               <span className="context-number">B</span>
               <h3>Presidents matter, but they do not set the price tag.</h3>
               <p>
-                Taxes, spending, tariffs and regulation can push costs around.
-                So can the Federal Reserve, Congress, global energy markets,
-                weather, supply chains and businesses.
+                Taxes, spending, tariffs and regulation can push costs around. So can the Federal
+                Reserve, Congress, global energy markets, weather, supply chains and businesses.
               </p>
             </article>
             <article>
               <span className="context-number">C</span>
               <h3>Tariffs are taxes on imported goods.</h3>
               <p>
-                Importers pay them, then may absorb the cost or pass some of it
-                to customers. They can protect selected industries, but they are
-                not a general-purpose price-cutting tool.
+                Importers pay them, then may absorb the cost or pass some of it to customers. They
+                can protect selected industries, but they are not a general-purpose price-cutting
+                tool.
               </p>
             </article>
           </div>
           <div className="plain-english">
             <span>The short version</span>
             <p>
-              Campaign promises are easy. Making the entire national price level
-              go backward—without also breaking the economy—is not.
+              Campaign promises are easy. Making the entire national price level go backward—without
+              also breaking the economy—is not.
             </p>
           </div>
         </section>
@@ -216,9 +208,7 @@ export default async function Home() {
 
       <footer>
         <p>Built for accountability. Kept alive by stubbornness.</p>
-        <a
-          href="https://www.github.com/gb92/hastrumpmadethingscheaperyet"
-        >
+        <a href="https://www.github.com/gb92/hastrumpmadethingscheaperyet">
           View source on GitHub ↗
         </a>
       </footer>
